@@ -34,7 +34,7 @@ function parseConnections(data) {
   return completeGraph;
 }
 
-function dijkstra(graph, source) {
+function dijkstra(graph, source,targetNode) {
     const vertices = Object.keys(graph);
     // console.log(vertices);
     const dist = {};
@@ -66,7 +66,6 @@ function dijkstra(graph, source) {
         if(key == targetNode)
         console.log("the dist is",dist[key]);
     }
-    return dist;
 }
 function main() {
   const filePath = 'connections.txt';
@@ -75,13 +74,9 @@ function main() {
   const connections = readConnectionsFromFile(filePath);
 //   console.log(connections);
 
-  const distance = dijkstra(connections,startNode);
+ dijkstra(connections,startNode,targetNode);
 
-  if (distance === Infinity) {
-    console.log(`No path found between ${startNode} and ${targetNode}`);
-  } else {
-    console.log(`Distance between ${startNode} and ${targetNode}: ${distance}`);
-  }
+ 
 }
 
 main();
